@@ -1,4 +1,4 @@
-package codedat.main;
+package codeday.main;
 
 import java.awt.image.BufferedImage;
 
@@ -15,14 +15,14 @@ public class Drawer {
 	
 
 	public void draw(){
-		for (Square q: Main.square_list){
+		for (Square q: Graphics.square_list){
 			BufferedImage image = q.getMyImage();
 			
 			if (q.drawBackground()){
-				Main.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+				Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
 			}
 			
-			Main.pen.simplePen.drawImage(image, q.getX(), q.getY(), 40, 40, null);
+			Graphics.pen.simplePen.drawImage(image, q.getX(), q.getY(), 40, 40, null);
 		}
 	
 	}
