@@ -22,6 +22,7 @@ public class Drawer {
 		Graphics.pen.setColor(new Color(255,255,255));
 		
 		for (Square q: Graphics.square_list){
+			
 			BufferedImage image = q.getMyImage();
 			
 			if (q.drawBackground()){
