@@ -90,11 +90,10 @@ public class RealPlayer implements Player{
 	@Override
 	public void charInput(char c) {
 		boolean attack_mode = false;
-<<<<<<< HEAD
 		for (int count = 0; count < Graphics.en.size(); count ++){
 			Enemy temp = Graphics.en.get(count);
 			int temp_x = temp.getX();
-=======
+		}
 		int play_x = this.getX()/40;
 		int play_y = this.getY()/40;
 		try{
@@ -130,33 +129,6 @@ public class RealPlayer implements Player{
 				}
 			}
 		}
-
-		if (attack_mode == false){
-			try{
-				switch(c){
-				case 'a':
-					if(Graphics.square_array[this.getX()+1][this.getY()]==null){
-						this.x+=1;
-					}
-					break;
-				case 'd':
-					if(Graphics.square_array[this.getX()-1][this.getY()]==null){
-						this.x-=1;
-					}
-					break;
-				case 'w':
-					if(Graphics.square_array[this.getX()][this.getY()-1]==null){
-						this.y-=1;
-					}
-					break;
-				case 's':
-					if(Graphics.square_array[this.getX()][this.getY()+1]==null){
-						this.y+=1;
-					}
-					break;
-				}
-			}catch(Exception e){}
-		}
 		if (attack_mode == true){
 			try{
 				switch(c){
@@ -182,11 +154,8 @@ public class RealPlayer implements Player{
 					break;
 				}
 			}catch(Exception e){}
-
-
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		}
-		
+		else{
 		if ((c == 'a')&&(Graphics.square_array[this.getX()/40-1][this.getY()/40]==null)){
 			this.x -=40;
 		}
@@ -196,10 +165,10 @@ public class RealPlayer implements Player{
 		if ((c=='w')&&(Graphics.square_array[this.getX()/40][this.getY()/40-1]==null)){
 			this.y-=40;
 		}
-		if ((c=='s')&&(Graphics.square_array[this.getX()/40][this.getY()/40s]==null)){
+		if ((c=='s')&&(Graphics.square_array[this.getX()/40][this.getY()/40+1]==null)){
 			this.y+=40;
 		}
-		
+		}
 		
 	}
 	
