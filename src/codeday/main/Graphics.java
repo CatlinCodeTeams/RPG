@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
+import codeday.walls.Wall;
 import janus.engine.SimpleGraphics;
 import janus.engine.pens.SimplestPen;
 
@@ -31,12 +32,16 @@ public class Graphics extends SimpleGraphics{
 	
 	@Override
 	public void start(SimplestPen pen) {
+		square_array= new Square[40][30];
 		
 		loadImage("wall.png");
 		
+		for (int k=0; k<10; k++){
+			square_array[5+k][10] =new Wall(this.imgs.get("wall.png"), 200+k*40,400);
+		}
+		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
-		square_array= new Square[mapWidth][mapLength];
 		turner=new TurnManager(null,null);
 		try {
 			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("spr_left.png").toURI())));

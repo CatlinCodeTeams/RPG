@@ -25,16 +25,13 @@ public class Drawer {
 			for (Square q: q2){
 			
 				if (q !=null){
-				BufferedImage image = q.getMyImage();
 				
 				if (q.drawBackground()){
 					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
 				}
 				
-				Graphics.pen.simplePen.drawImage(image, q.getX(), q.getY(), 40, 40, null);}
-				
-				else
-					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+				Graphics.pen.drawImage("wall.png", q.getX(), q.getY(), 40, 40, 0);}
+
 				
 				}
 				

@@ -12,8 +12,9 @@ public class Wall implements NonWalkable{
 	private Point location;
 	private BufferedImage image;
 
-	public Wall(int x, int y){
+	public Wall(BufferedImage image, int x, int y){
 		this.location = new Point(x,y);
+		this.image = image;
 	}
 	
 	
