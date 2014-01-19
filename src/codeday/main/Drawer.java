@@ -3,12 +3,7 @@ package codeday.main;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-<<<<<<< HEAD
-import codeday.rpg.floor.Floor;
 import codeday.rpg.interfaces.Enemy;
-=======
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 import codeday.rpg.interfaces.Square;
 
 public class Drawer {
@@ -25,7 +20,7 @@ public class Drawer {
 
 		//draw_grid();
 		for(Enemy e:Graphics.en){
-			Graphics.pen.drawImage(e.getMyImage(), e.getTrueX()*40, e.getTrueY()*40, 40, 40,0);
+			Graphics.pen.drawImage(e.getMyImage(), e.getX()*40, e.getY()*40, 40, 40,0);
 		}
 		Graphics.pen.setColor(new Color(255,255,255));
 

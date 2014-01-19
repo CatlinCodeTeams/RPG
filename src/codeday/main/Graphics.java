@@ -44,6 +44,7 @@ public class Graphics extends SimpleGraphics{
 	public static SimplestPen pen;
 	public static int mapWidth;
 	public static int mapLength;
+	public static ArrayList<Enemy> en;
 	public static HashMap<String,BufferedImage> img;
 	
 	@Override
@@ -51,7 +52,7 @@ public class Graphics extends SimpleGraphics{
 		img=imgs;
 		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
-		ArrayList<Enemy> en=new ArrayList<Enemy>();
+		en=new ArrayList<Enemy>();
 		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
