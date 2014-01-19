@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.enemies.Rat;
+import codeday.rpg.floor.Floor;
 import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
@@ -78,7 +79,7 @@ public class Graphics extends SimpleGraphics{
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
-						ls.get(ls.size()-1).add(null);
+						ls.get(ls.size()-1).add(new Floor(two,one));
 					}
 					else if(c=='t'){
 						ls.get(ls.size()-1).add(new Fire_Trap(two*40,one*40));
@@ -123,7 +124,7 @@ public class Graphics extends SimpleGraphics{
 		int num1=new Random().nextInt(s.length);
 		Square[] ch=s[num1];
 		int num=new Random().nextInt(ch.length);
-		if(ch[num]==null){
+		if(ch[num]instanceof Floor){
 			p=new RealPlayer(this.imgs.get("spr_main.png"), 40, 40);
 			ch[num]= p;
 		}
