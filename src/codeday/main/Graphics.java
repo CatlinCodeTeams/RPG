@@ -46,7 +46,6 @@ public class Graphics extends SimpleGraphics{
 	public static int mapLength;
 	public static ArrayList<Enemy> en;
 	public static HashMap<String,BufferedImage> img;
-	public static ArrayList<Enemy> en=new ArrayList<Enemy>();
 	
 	@Override
 	public void start(SimplestPen pen) {
@@ -54,12 +53,15 @@ public class Graphics extends SimpleGraphics{
 		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
 		en=new ArrayList<Enemy>();
-		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
 		loadImage("spr_sprite.png");
 		loadImage("stone_tile.png");
+		
+		
+		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
+		
 		ArrayList<ArrayList<Square>> ls=new ArrayList<ArrayList<Square>>();
 		BufferedReader reader=null;
 		try {
@@ -119,7 +121,6 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 		
-		square_array[6][6] = new Rat(this.imgs.get("spr_rat_down2"), 240, 240);
 	}
 	public void chuckNorris(Square[][] s){
 		int num1=new Random().nextInt(s.length);

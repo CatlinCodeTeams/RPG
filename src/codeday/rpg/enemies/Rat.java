@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 
 
 public class Rat extends BasicEnemyIntelligence{
-	BufferedImage image;
 	public Rat(BufferedImage image, int in_x,int in_y){
 		x = in_x;
 		y = in_y;
