@@ -1,4 +1,4 @@
-package Enemies;
+package codeday.rpg.enemies;
 
 import java.awt.image.BufferedImage;
 
