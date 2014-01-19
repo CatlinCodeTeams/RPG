@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import codeday.rpg.floor.Floor;
 import codeday.rpg.interfaces.Square;
 
 public class Drawer {
@@ -29,7 +30,7 @@ public class Drawer {
 			int y=-1;
 			for (Square q: q2){
 				y++;
-				if ((q !=null)&&(q.getMyImage()!=null)){
+				if (!(q instanceof Floor)&&(q.getMyImage()!=null)){
 
 					if (q.drawBackground()){
 						Graphics.pen.drawImage("stone_tile.png", q.getX(), q.getY(), 40, 40, 0);
