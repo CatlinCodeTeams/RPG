@@ -26,10 +26,14 @@ public class Graphics extends SimpleGraphics{
 	
 	public static ArrayList<Square> square_list;
 	public static SimplestPen pen;
-	
+	public static int mapWidth;
+	public static int mapLength;
 	
 	@Override
 	public void start(SimplestPen pen) {
+		
+		loadImage("wall.png");
+		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
 		square_list= new ArrayList<Square>();
