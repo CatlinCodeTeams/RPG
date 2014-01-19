@@ -50,12 +50,15 @@ public class Graphics extends SimpleGraphics{
 		img=imgs;
 		square_array= new Square[40][30];
 		en=new ArrayList<Enemy>();
-		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
 		loadImage("spr_sprite.png");
 		loadImage("stone_tile.png");
+		
+		
+		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
+		
 		ArrayList<ArrayList<Square>> ls=new ArrayList<ArrayList<Square>>();
 		BufferedReader reader=null;
 		try {
@@ -115,7 +118,6 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 		
-		square_array[6][6] = new Rat(this.imgs.get("spr_rat_down2"), 240, 240);
 	}
 	public void chuckNorris(Square[][] s){
 		int num1=new Random().nextInt(s.length);

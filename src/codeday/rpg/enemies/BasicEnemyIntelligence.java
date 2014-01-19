@@ -87,12 +87,13 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 	
 	private void move (Square [] [] map) {
-		Integer [] [] numberMap = new Integer [Graphics.mapWidth] [Graphics.mapLength];
+		//Integer [] [] numberMap = new Integer [Graphics.mapWidth] [Graphics.mapLength];
+		Integer [] [] numberMap = new Integer [40] [30];
 		boolean done = false;
 		for (Square [] mapColumn : map) {
 			for (Square mapCell : mapColumn) {
 				if (mapCell instanceof Player) {
-					numberMap [mapCell.getX()] [mapCell.getY()] = 0;
+					numberMap [mapCell.getX()/40] [mapCell.getY()/40] = 0;
 
 					distanceMap (mapCell, map, numberMap);
 					done = true;

@@ -90,8 +90,7 @@ public class SimplestPen {
 		if (rotation != 0) {
 			img = ImageRotator.getRotatedImage(img, rotation);
 		}
-		simplePen.drawImage(img.getScaledInstance(width, height, 0), x, y,
-				width, height, null);
+		simplePen.drawImage(img.getScaledInstance(width, height, 0), x, y,width, height, null);
 	}
 
 	public void drawLine(int startX, int startY, int endX, int endY) {
