@@ -21,7 +21,10 @@ public class RealPlayer implements Player{
 	int damage=5;
 	int x;
 	int y;
-	
+	int _top_;
+	int _right_;
+	int _down_;
+	int _left_;
 	Point draw_location;
 	
 	BufferedImage image;
@@ -87,9 +90,101 @@ public class RealPlayer implements Player{
 	@Override
 	public void charInput(char c) {
 		boolean attack_mode = false;
+<<<<<<< HEAD
 		for (int count = 0; count < Graphics.en.size(); count ++){
 			Enemy temp = Graphics.en.get(count);
 			int temp_x = temp.getX();
+=======
+		int play_x = this.getX()/40;
+		int play_y = this.getY()/40;
+		try{
+			switch(c){
+			case 'j':
+				attack_mode = true;
+			}
+		}catch(Exception e){}
+		if (attack_mode == true){
+			for (int count = 0; count < Graphics.en.size(); count ++){
+				Enemy temp = Graphics.en.get(count);
+				int temp_x = temp.getX();
+				int temp_y = temp.getY();
+				_top_ = -1;
+				_right_ = -1;
+				_down_ = -1;
+				_left_ = -1;
+				if (play_x-temp_x >=-1 && play_x-temp_x <=1 && play_y == temp_y){
+					if (play_x-temp_x < 0){
+						_right_ = count;
+					}
+					else{
+						_left_ = count;
+					}
+				}
+				if (play_y-temp_y >=-1 && play_y-temp_y <=1 && play_x == temp_x){
+					if (play_y - temp_y < 0){
+						_down_ = count;
+					}
+					else{
+						_top_ = count;
+					}
+				}
+			}
+		}
+
+		if (attack_mode == false){
+			try{
+				switch(c){
+				case 'a':
+					if(Graphics.square_array[this.getX()+1][this.getY()]==null){
+						this.x+=1;
+					}
+					break;
+				case 'd':
+					if(Graphics.square_array[this.getX()-1][this.getY()]==null){
+						this.x-=1;
+					}
+					break;
+				case 'w':
+					if(Graphics.square_array[this.getX()][this.getY()-1]==null){
+						this.y-=1;
+					}
+					break;
+				case 's':
+					if(Graphics.square_array[this.getX()][this.getY()+1]==null){
+						this.y+=1;
+					}
+					break;
+				}
+			}catch(Exception e){}
+		}
+		if (attack_mode == true){
+			try{
+				switch(c){
+				case 'a':
+					if(_left_ != -1){
+						Graphics.en.get(_left_).takeDamage(this.damage);
+					}
+					break;
+				case 'd':
+					if(_right_ != -1){
+						Graphics.en.get(_right_).takeDamage(this.damage);
+					}
+					break;
+				case 'w':
+					if(_top_ != -1){
+						Graphics.en.get(_top_).takeDamage(this.damage);
+					}
+					break;
+				case 's':
+					if(_down_ != -1){
+						Graphics.en.get(_down_).takeDamage(this.damage);
+					}
+					break;
+				}
+			}catch(Exception e){}
+
+
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		}
 		
 		if ((c == 'a')&&(Graphics.square_array[this.getX()/40-1][this.getY()/40]==null)){
@@ -111,7 +206,7 @@ public class RealPlayer implements Player{
 	public void draw(SimplestPen pen){
 		Vector vec = this.draw_location.make_vector(new Point(this.x, this.y));
 		vec.normalize();
-		
+
 		this.draw_location.move(vec);
 	}
 
