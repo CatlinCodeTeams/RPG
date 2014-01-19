@@ -1,4 +1,4 @@
-package codedat.main;
+package codeday.main;
 
 import java.util.List;
 
