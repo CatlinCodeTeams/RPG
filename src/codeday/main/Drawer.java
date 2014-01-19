@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import codeday.rpg.floor.Floor;
+import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Square;
 
 public class Drawer {
@@ -20,7 +21,9 @@ public class Drawer {
 	public void draw(){
 
 		//draw_grid();
-
+		for(Enemy e:Graphics.en){
+			Graphics.pen.drawImage(e.getMyImage(), e.getTrueX()*40, e.getTrueY()*40, 40, 40,0);
+		}
 		Graphics.pen.setColor(new Color(255,255,255));
 
 		
