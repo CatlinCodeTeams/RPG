@@ -14,7 +14,10 @@ public class RealPlayer implements Player{
 	int health=20;
 	int x;
 	int y;
-	public RealPlayer(int x,int y){
+	BufferedImage image;
+	public RealPlayer(BufferedImage image, int x,int y){
+		
+		this.image = image;
 		this.x=x;
 		this.y=y;
 		try {
@@ -63,7 +66,7 @@ public class RealPlayer implements Player{
 
 	@Override
 	public BufferedImage getMyImage() {
-		return null;
+		return this.image;
 	}
 
 	@Override
