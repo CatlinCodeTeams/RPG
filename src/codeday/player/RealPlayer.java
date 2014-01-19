@@ -52,7 +52,7 @@ public class RealPlayer implements Player{
 
 	@Override
 	public boolean isDead() {
-		return health>0;
+		return health>0; 
 	}
 
 	@Override
