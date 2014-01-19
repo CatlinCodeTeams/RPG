@@ -113,7 +113,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			available [0] = false;
 			}
 		if (square.getX() == Graphics.mapWidth) {
-			available [1]] = false;
+			available [1] = false;
 			}
 		if (square.getY() == 0) {
 			available[3] = false;

@@ -1,5 +1,9 @@
 package codeday.player;
 
+import janus.engine.Point;
+import janus.engine.Vector;
+import janus.engine.pens.SimplestPen;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +19,9 @@ public class RealPlayer implements Player{
 	int health=20;
 	int x;
 	int y;
+	
+	Point draw_location;
+	
 	BufferedImage image;
 	public RealPlayer(BufferedImage image, int x,int y){
 		
@@ -89,6 +96,13 @@ public class RealPlayer implements Player{
 		else if ((c=='s')&&(Graphics.square_array[this.getX()/40][getY()/40+1]==null)){
 			this.y+=40;
 		}
+	}
+	
+	public void draw(SimplestPen pen){
+		Vector vec = this.draw_location.make_vector(new Point(this.x, this.y));
+		vec.normalize();
+		
+		this.draw_location.move(vec);
 	}
 
 }

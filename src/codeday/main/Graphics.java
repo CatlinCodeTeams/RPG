@@ -19,6 +19,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 import codeday.player.RealPlayer;
+import codeday.rpg.enemies.Rat;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
@@ -110,13 +111,15 @@ public class Graphics extends SimpleGraphics{
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
+		
+		square_array[6][6] = new Rat(this.imgs.get("spr_rat_down2"), 240, 240);
 	}
 	public void chuckNorris(Square[][] s){
 		int num1=new Random().nextInt(s.length);
 		Square[] ch=s[num1];
 		int num=new Random().nextInt(ch.length);
 		if(ch[num]==null){
-			p=new RealPlayer(this.imgs.get("spr_main.png"), num*40, num1*40);
+			p=new RealPlayer(this.imgs.get("spr_main.png"), 40, 40);
 			ch[num]= p;
 		}
 		else{
@@ -132,6 +135,7 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void draw(SimplestPen pen) {
 		drawer.draw();
+
 		
 	}
 

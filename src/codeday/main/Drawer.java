@@ -36,6 +36,7 @@ public class Drawer {
 					}
 
 					Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
+					
 
 				}
 				else{
