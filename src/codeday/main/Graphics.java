@@ -18,6 +18,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
@@ -76,6 +77,9 @@ public class Graphics extends SimpleGraphics{
 					}
 					else if(c==' '){
 						ls.get(ls.size()-1).add(null);
+					}
+					else if(c=='t'){
+						ls.get(ls.size()-1).add(new Fire_Trap(two*40,one*40));
 					}
 				}
 			}
