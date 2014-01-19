@@ -56,7 +56,6 @@ public class Wall implements NonWalkable{
 
 	@Override
 	public int getTrueY() {
-		// TODO Auto-generated method stub
 		return getY();
 	}
 
