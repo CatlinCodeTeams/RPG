@@ -21,10 +21,7 @@ import javax.imageio.ImageIO;
 import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.enemies.Rat;
-<<<<<<< HEAD
-=======
 import codeday.rpg.interfaces.Enemy;
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
