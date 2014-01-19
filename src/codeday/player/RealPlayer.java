@@ -8,11 +8,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import codeday.main.Graphics;
 import codeday.rpg.enemies.BasicEnemyIntelligence;
+import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.resource.sprites.FileLoader;
 public class RealPlayer implements Player{
@@ -87,60 +89,67 @@ public class RealPlayer implements Player{
 
 	@Override
 	public void charInput(char c) {
+		ArrayList<Enemy>en = Graphics.en;
 		this.attack_mode = false;
 		try{
 			switch(c){
-			case 'f':
+			case 'j':
 				this.attack_mode = true;
 			}
 		}catch(Exception e){}
 		if (this.attack_mode == true){
-			boolean en_left = false;
-			boolean en_up = false;
-			boolean en_right = false;
-			boolean en_down = false;
+			System.out.println("it works");
+			Enemy _left_ = null;
+			Enemy _up_ = null;
+			Enemy _right_ = null;
+			Enemy _down_ = null;
+			for(int count = 0; count <= Graphics.en.size(); count ++){
+				Enemy temp = Graphics.en.get(count);
+				int play_x = this.getTrueX();
+				int play_y = this.getTrueY();
+				int temp_x = temp.getTrueX();
+				int temp_y = temp.getTrueY();
+				if ((play_x-temp_x) >-1 && (play_x-temp_x) < 1 && play_y == temp.getY()/40){
+					if (temp_x < play_x){
+						_left_ = en.get(count);
+					}
+					if (temp_x > play_x){
+						_right_ = en.get(count);
+
+					}
+				}
+				if ((play_y-temp_y) >-1 && (play_y-temp_y) < 1 && play_x == temp_x){
+					if (temp_y < play_y){
+						_up_ = en.get(count);
+					}
+					if (temp_y > play_y){
+						_down_= en.get(count);
+					}
+				}
+			}
 			try{
 				switch(c){
-				case 'a':
-					for(int count = 0; count <= 20; count ++){
-						BasicEnemyIntelligence temp = Graphics.en[count];
-						int play_x = this.getTrueX();
-						int play_y = this.getTrueY();
-						int temp_x = temp.getTrueX();
-						int temp_y = temp.getTrueY();
-						if ((play_x-temp_x) >-1 && (play_x-temp_x) < 1 && play_y == temp.getY()/40){
-							if (temp_x < play_x){
-								en_left = true;
-							}
-							else{
-								en_right = true;
-							}
-						}
-						if ((play_y-temp_y) >-1 && (play_y-temp_y) < 1 && play_x == temp_x){
-							if (temp_y < play_y){
-								en_up = true;
-							}
-							else{
-								en_down = true;
-							}
-						}
-					}
-					break;
 				case 'd':
-					if(Graphics.square_array[this.getX()-1][this.getY()]==null){
-						this.x-=1;
+					if (_right_ != null){
+						_right_.takeDamage(this.damage);
+						break;
 					}
 					break;
 				case 'w':
-					if(Graphics.square_array[this.getX()][this.getY()-1]==null){
-						this.y-=1;
+					if (_up_ != null){
+						_up_.takeDamage(this.damage);
 					}
-					break;
+
 				case 's':
-					if(Graphics.square_array[this.getX()][this.getY()+1]==null){
-						this.y+=1;
+					if (_down_ != null){
+						_down_.takeDamage(this.damage);
+						break;
 					}
-					break;
+				case 'a':
+					if (_left_ != null){
+						_left_.takeDamage(this.damage);
+						break;
+					}
 				}
 			}catch(Exception e){}
 		}

@@ -45,13 +45,13 @@ public class Graphics extends SimpleGraphics{
 	public static int mapWidth;
 	public static int mapLength;
 	public static HashMap<String,BufferedImage> img;
+	public static ArrayList<Enemy> en = new ArrayList<Enemy>();;
 	
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
 		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
-		ArrayList<Enemy> en=new ArrayList<Enemy>();
 		en.add(new Rat(1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
