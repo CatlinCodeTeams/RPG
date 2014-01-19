@@ -103,8 +103,27 @@ public class RealPlayer implements Player{
 				switch(c){
 				case 'a':
 					for(int count = 0; count <= 20; count ++){
-						//BasicEnemyIntelligence temp = Graphics.en[count];
-						
+						BasicEnemyIntelligence temp = Graphics.en[count];
+						int play_x = this.getTrueX();
+						int play_y = this.getTrueY();
+						int temp_x = temp.getTrueX();
+						int temp_y = temp.getTrueY();
+						if ((play_x-temp_x) >-1 && (play_x-temp_x) < 1 && play_y == temp.getY()/40){
+							if (temp_x < play_x){
+								en_left = true;
+							}
+							else{
+								en_right = true;
+							}
+						}
+						if ((play_y-temp_y) >-1 && (play_y-temp_y) < 1 && play_x == temp_x){
+							if (temp_y < play_y){
+								en_up = true;
+							}
+							else{
+								en_down = true;
+							}
+						}
 					}
 					break;
 				case 'd':
@@ -152,7 +171,6 @@ public class RealPlayer implements Player{
 			}catch(Exception e){}
 		}
 	}
-	
 	public void draw(SimplestPen pen){
 		Vector vec = this.draw_location.make_vector(new Point(this.x, this.y));
 		vec.normalize();
