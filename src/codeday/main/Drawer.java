@@ -37,8 +37,8 @@ public class Drawer {
 				
 			}
 		
-		for (int x=0; x<40; x++)
-			for (int y=0; y<30; y++){
+		for (int x=0; x<Graphics.square_array.length; x++)
+			for (int y=0; y<Graphics.square_array[0].length; y++){
 				
 				if (Graphics.square_array[x][y]==null)
 					Graphics.pen.drawImage(this.image, x*40, y*40, 40, 40, 0);
