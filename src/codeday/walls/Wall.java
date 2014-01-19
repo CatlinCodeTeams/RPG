@@ -47,16 +47,4 @@ public class Wall implements NonWalkable{
 		
 	}
 
-
-	@Override
-	public int getTrueX() {
-		return getX();
-	}
-
-
-	@Override
-	public int getTrueY() {
-		return getY();
-	}
-
 }

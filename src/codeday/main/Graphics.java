@@ -21,7 +21,6 @@ import javax.imageio.ImageIO;
 import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.enemies.Rat;
-import codeday.rpg.floor.Floor;
 import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
@@ -46,14 +45,14 @@ public class Graphics extends SimpleGraphics{
 	public static int mapWidth;
 	public static int mapLength;
 	public static HashMap<String,BufferedImage> img;
-	public static ArrayList<Enemy> en = new ArrayList<Enemy>();;
 	
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
 		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
-		en.add(new Rat(1,1));
+		ArrayList<Enemy> en=new ArrayList<Enemy>();
+		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
@@ -79,7 +78,7 @@ public class Graphics extends SimpleGraphics{
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
-						ls.get(ls.size()-1).add(new Floor(two,one));
+						ls.get(ls.size()-1).add(null);
 					}
 					else if(c=='t'){
 						ls.get(ls.size()-1).add(new Fire_Trap(two*40,one*40));
@@ -118,13 +117,13 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 		
-		square_array[6][6] = new Rat(240, 240);
+		square_array[6][6] = new Rat(this.imgs.get("spr_rat_down2"), 240, 240);
 	}
 	public void chuckNorris(Square[][] s){
 		int num1=new Random().nextInt(s.length);
 		Square[] ch=s[num1];
 		int num=new Random().nextInt(ch.length);
-		if(ch[num]instanceof Floor){
+		if(ch[num]==null){
 			p=new RealPlayer(this.imgs.get("spr_main.png"), 40, 40);
 			ch[num]= p;
 		}

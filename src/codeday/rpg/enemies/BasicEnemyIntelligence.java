@@ -43,23 +43,13 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 
 	@Override
-	public int getTrueX() {
+	public int getX() {
 		return x;
 	}
 
 	@Override
-	public int getTrueY() {
-		return y;
-	}
-	
-	@Override
-	public int getX() {
-		return x * 40;
-	}
-	
-	@Override
 	public int getY() {
-		return y * 40;
+		return y;
 	}
 
 	@Override
@@ -97,12 +87,13 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 	
 	private void move (Square [] [] map) {
-		Integer [] [] numberMap = new Integer [map.length] [map [0].length];
+		Integer [] [] numberMap = new Integer [Graphics.mapWidth] [Graphics.mapLength];
 		boolean done = false;
 		for (Square [] mapColumn : map) {
 			for (Square mapCell : mapColumn) {
 				if (mapCell instanceof Player) {
-					numberMap [mapCell.getTrueX()] [mapCell.getTrueY()] = 0;
+					numberMap [mapCell.getX()] [mapCell.getY()] = 0;
+
 					distanceMap (mapCell, map, numberMap);
 					done = true;
 					break;
@@ -112,47 +103,45 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 				break;
 			}
 		}
-		for (int n = 0; n < this.speed; n ++) {
-			ArrayList<Square> possibleMoves = new ArrayList<Square> ();
-			//start crap
-			Square move = null;
-			if (this.getTrueX() != 0) {
-				move = map [this.getTrueX() - 1] [this.getTrueY()];
-				if (move instanceof Walkable || move == null) {
-					possibleMoves.add(move);
+		ArrayList<Square> possibleMoves = new ArrayList<Square> ();
+		//start crap
+		Square move = null;
+		if (this.getX() != 0) {
+			move = map [this.getX() - 1] [this.getY()];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
+		}
+		if (this.getX() != Graphics.mapWidth) {
+			move = map [this.getX() + 1] [this.getY()];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
+		}
+		if (this.getY() != 0) {
+			move = map [this.getX()] [this.getY() - 1];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
+		}
+		if (this.getX() != Graphics.mapLength) {
+			move = map [this.getX()] [this.getY() + 1];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
+		}
+		//end crap
+		if (!possibleMoves.isEmpty()) {
+			Integer smallest = null;
+			Square finalMove = null;
+			for (Square option : possibleMoves) {
+				if (numberMap [option.getX()] [option.getY()] < smallest || smallest == null) {
+					smallest = numberMap [option.getX()] [option.getY()];
+					finalMove = option;
 				}
 			}
-			if (this.getTrueX() != Graphics.mapWidth) {
-				move = map [this.getTrueX() + 1] [this.getTrueY()];
-				if (move instanceof Walkable || move == null) {
-					possibleMoves.add(move);
-				}
-			}
-			if (this.getTrueY() != 0) {
-				move = map [this.getTrueX()] [this.getTrueY() - 1];
-				if (move instanceof Walkable || move == null) {
-					possibleMoves.add(move);
-				}
-			}
-			if (this.getTrueX() != Graphics.mapLength) {
-				move = map [this.getTrueX()] [this.getTrueY() + 1];
-				if (move instanceof Walkable || move == null) {
-					possibleMoves.add(move);
-				}
-			}
-			//end crap
-			if (!possibleMoves.isEmpty()) {
-				Integer smallest = null;
-				Square finalMove = null;
-				for (Square option : possibleMoves) {
-					if (numberMap [option.getTrueX()] [option.getTrueY()] < smallest || smallest == null) {
-						smallest = numberMap [option.getTrueX()] [option.getTrueY()];
-						finalMove = option;
-					}
-				}
-				this.x = finalMove.getTrueX();
-				this.y = finalMove.getTrueY();
-			}
+			this.x = finalMove.getX();
+			this.y = finalMove.getY();
 		}
 	}
 
@@ -162,16 +151,16 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			bool = true;
 			}
 		//start crap
-		if (square.getTrueX() == 0) {
+		if (square.getX() == 0) {
 			available [0] = false;
 			}
-		if (square.getTrueX() == Graphics.mapWidth) {
+		if (square.getX() == Graphics.mapWidth) {
 			available [1] = false;
 			}
-		if (square.getTrueY() == 0) {
+		if (square.getY() == 0) {
 			available[3] = false;
 		}
-		if (square.getTrueY() == Graphics.mapLength) {
+		if (square.getY() == Graphics.mapLength) {
 			available [4] = false;
 		}
 		//end crap
@@ -180,16 +169,16 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			if (available [count]) {
 				Square square2 = null;
 				if (count == 0) {
-					square2 = map [square.getTrueX() - 1] [square.getTrueY()];
+					square2 = map [square.getX() - 1] [square.getY()];
 				} else if (count == 1) {
-					square2 = map [square.getTrueX() + 1] [square.getTrueY()];
+					square2 = map [square.getX() + 1] [square.getY()];
 				} else if (count == 2) {
-					square2 = map [square.getTrueX()] [square.getTrueY() - 1];
+					square2 = map [square.getX()] [square.getY() - 1];
 				} else {
-					square2 = map [square.getTrueX()] [square.getTrueY() + 1];
+					square2 = map [square.getX()] [square.getY() + 1];
 				}
-				if (square2 instanceof Walkable && (numberMap [square2.getTrueX()] [square2.getTrueY()] == null || numberMap [square2.getTrueX()] [square2.getTrueY()] > numberMap [square.getTrueX()] [square.getTrueY()] + 1)) {
-					numberMap [square2.getTrueX()] [square2.getTrueY()] = numberMap [square.getTrueX()] [square.getTrueY()] + 1;
+				if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getX()] [square2.getY()] == null || numberMap [square2.getX()] [square2.getY()] > numberMap [square.getX()] [square.getY()] + 1)) {
+					numberMap [square2.getX()] [square2.getY()] = numberMap [square.getX()] [square.getY()] + 1;
 					adjacents [count] = square2;
 				}
 			}
