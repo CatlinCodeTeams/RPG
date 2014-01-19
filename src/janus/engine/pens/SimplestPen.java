@@ -83,6 +83,16 @@ public class SimplestPen {
 		simplePen.drawImage(img.getScaledInstance(width, height, 0), x, y,
 				width, height, null);
 	}
+	public void drawImage(BufferedImage img, int x, int y, int width, int height,
+			int rotation) {
+		x -= window.xOff;
+		y -= window.yOff;
+		if (rotation != 0) {
+			img = ImageRotator.getRotatedImage(img, rotation);
+		}
+		simplePen.drawImage(img.getScaledInstance(width, height, 0), x, y,
+				width, height, null);
+	}
 
 	public void drawLine(int startX, int startY, int endX, int endY) {
 		startX -= window.xOff;
