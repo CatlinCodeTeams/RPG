@@ -9,16 +9,11 @@ public class Graphics extends SimpleGraphics{
 	}
 	
 	Drawer drawer = new Drawer(background_image);
-
-	@Override
-	public void draw(SimplestPen pen) {
-		drawer.draw();
-		
-	}
-
+	TurnManager turner;
 	@Override
 	public void start(SimplestPen pen) {
 		// TODO Auto-generated method stub
+		turner=new TurnManager(null,null);
 		
 	}
 
@@ -27,6 +22,13 @@ public class Graphics extends SimpleGraphics{
 		Main.pen = this.myPen;
 		
 	}
+
+	@Override
+	public void draw(SimplestPen pen) {
+		drawer.draw();
+		
+	}
+
 	@Override
 	public void onKeyTyped(KeyEvent e,SimplestPen pen){
 	}
