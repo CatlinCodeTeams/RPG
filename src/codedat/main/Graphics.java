@@ -6,10 +6,12 @@ public class Graphics extends SimpleGraphics{
 	protected Graphics() {
 		super(800, 600, "RPG");
 	}
+	
+	Drawer drawer = new Drawer(background_image);
 
 	@Override
 	public void draw(SimplestPen pen) {
-		// TODO Auto-generated method stub
+		drawer.draw();
 		
 	}
 

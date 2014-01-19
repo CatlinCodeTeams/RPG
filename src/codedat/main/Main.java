@@ -11,9 +11,10 @@ public class Main {
 	public static ArrayList<Square> square_list = new ArrayList<Square>();
 	public static SimplestPen pen;
 	
+	
 	public static void main(String[] args){
 		
-		
+		new Graphics();
 		
 	}
 }
