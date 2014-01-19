@@ -89,7 +89,7 @@ public class RealPlayer implements Player{
 		boolean attack_mode = false;
 		for (int count = 0; count < Graphics.en.size(); count ++){
 			Enemy temp = Graphics.en.get(count);
-			int temp_x = temp.getReal_X()
+			int temp_x = temp.getX();
 		}
 		try{
 		switch(c){
