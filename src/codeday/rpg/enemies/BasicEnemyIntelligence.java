@@ -104,45 +104,42 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 
 	private void distanceMap (Square square, Square [] [] map, Integer [] [] numberMap) {
-		boolean [] [] available = new boolean [3] [3];
-		for (int countX = 0; countX <= 2; countX ++) {
-			for (int countY = 0; countY <= 2; countY ++) {
-				available[countX] [countY] = true;
+		boolean [] available = new boolean [4];
+		for (boolean bool : available) {
+			bool = true;
 			}
-		}
 		//start crap
-		available [1] [1] = false;
 		if (square.getX() == 0) {
-			for (int count = 0; count <= 2; count ++) {
-				available [0] [count] = false;
+			available [0] = false;
 			}
-		}
 		if (square.getX() == Graphics.mapWidth) {
-			for (int count = 0; count <= 2; count ++) {
-				available [Graphics.mapWidth] [count] = false;
+			available [1]] = false;
 			}
-		}
 		if (square.getY() == 0) {
-			for (int count = 0; count <= 2; count ++) {
-				available [count] [0] = false;
-			}
+			available[3] = false;
 		}
 		if (square.getY() == Graphics.mapLength) {
-			for (int count = 0; count <= 2; count ++) {
-				available [count] [Graphics.mapLength] = false;
-			}
+			available [4] = false;
 		}
 		//end crap
-		Square [] adjacents = new Square [8];
-		int indexCount = 0;
-		for (int countX = 0; countX <= 2; countX ++) {
-			for (int countY = 0; countY <= 2; countY ++) {
-				if (available [countX] [countY]) {
-					 Square square2 = adjacents [indexCount] = map [square.getX() - 1 + countX] [square.getY() - 1 + countY];
-					 if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getX()] [square2.getY()] == null || numberMap [square2.getX()] [square2.getY()] > numberMap [square.getX()] [square.getY()] + 1)) {
-						 numberMap [square2.getX()] [square2.getY()] = numberMap [square.getX()] [square.getY()] + 1;
-						 adjacents [indexCount] = square2;
-					 }
+		Square [] adjacents = new Square [4];
+		for (int count = 0; count <= 3; count ++) {
+			if (available [count]) {
+				if (count == 0) {
+					Square square2 = map [square.getX() - 1] [square.getY()];
+				}
+				if (count == 1) {
+					Square square2 = map [square.getX() + 1] [square.getY()];
+				}
+				if (count == 2) {
+					Square square2 = map [square.getX()] [square.getY() - 1];
+				}
+				if (count == 3) {
+					Square square2 = map [square.getX()] [square.getY() + 1];
+				}
+				if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getX()] [square2.getY()] == null || numberMap [square2.getX()] [square2.getY()] > numberMap [square.getX()] [square.getY()] + 1)) {
+					numberMap [square2.getX()] [square2.getY()] = numberMap [square.getX()] [square.getY()] + 1;
+					adjacents [count] = square2;
 				}
 			}
 		}
