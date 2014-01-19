@@ -5,6 +5,7 @@ import janus.engine.Point;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import codeday.rpg.interfaces.Animate;
 import codeday.rpg.interfaces.NonWalkable;
 
 public class Wall implements NonWalkable{
@@ -37,6 +38,13 @@ public class Wall implements NonWalkable{
 	public boolean drawBackground() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public void trigger(Animate a) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
