@@ -104,21 +104,43 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		}
 		ArrayList<Square> possibleMoves = new ArrayList<Square> ();
 		//start crap
+		Square move = null;
 		if (this.getX() != 0) {
-			possibleMoves.add(map [this.getX() - 1] [this.getY()]);
+			move = map [this.getX() - 1] [this.getY()];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
 		}
 		if (this.getX() != Graphics.mapWidth) {
-			possibleMoves.add(map [this.getX() + 1] [this.getY()]);
+			move = map [this.getX() + 1] [this.getY()];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
 		}
 		if (this.getY() != 0) {
-			possibleMoves.add(map [this.getX()] [this.getY() - 1]);
+			move = map [this.getX()] [this.getY() - 1];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
 		}
 		if (this.getX() != Graphics.mapLength) {
-			possibleMoves.add(map [this.getX()] [this.getY() + 1]);
+			move = map [this.getX()] [this.getY() + 1];
+			if (move instanceof Walkable || move == null) {
+				possibleMoves.add(move);
+			}
 		}
 		//end crap
 		if (!possibleMoves.isEmpty()) {
-			
+			Integer smallest = null;
+			Square finalMove = null;
+			for (Square option : possibleMoves) {
+				if (numberMap [option.getX()] [option.getY()] < smallest || smallest == null) {
+					smallest = numberMap [option.getX()] [option.getY()];
+					finalMove = option;
+				}
+			}
+			this.x = finalMove.getX();
+			this.y = finalMove.getY();
 		}
 	}
 
