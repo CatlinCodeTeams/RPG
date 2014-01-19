@@ -45,6 +45,7 @@ public class Graphics extends SimpleGraphics{
 	public static int mapWidth;
 	public static int mapLength;
 	public static HashMap<String,BufferedImage> img;
+	public static ArrayList<Enemy> en=new ArrayList<Enemy>();
 	
 	@Override
 	public void start(SimplestPen pen) {

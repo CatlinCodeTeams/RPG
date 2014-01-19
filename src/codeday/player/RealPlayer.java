@@ -12,11 +12,13 @@ import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 
 import codeday.main.Graphics;
+import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.resource.sprites.FileLoader;
 public class RealPlayer implements Player{
 	BufferedImage defualt;
 	int health=20;
+	int damage=5;
 	int x;
 	int y;
 	
@@ -38,7 +40,7 @@ public class RealPlayer implements Player{
 	}
 	@Override
 	public int getAttack() {
-		return 3;
+		return this.damage;
 	}
 
 	@Override
@@ -84,6 +86,11 @@ public class RealPlayer implements Player{
 
 	@Override
 	public void charInput(char c) {
+		boolean attack_mode = false;
+		for (int count = 0; count < Graphics.en.size(); count ++){
+			Enemy temp = Graphics.en.get(count);
+			temp_x = temp.getReal_X()
+		}
 		try{
 		switch(c){
 		case 'a':
