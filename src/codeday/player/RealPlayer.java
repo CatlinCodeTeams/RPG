@@ -31,8 +31,6 @@ public class RealPlayer implements Player{
 		this.image = image;
 		this.x=x;
 		this.y=y;
-		System.out.println(x);
-		System.out.println(y);
 		try {
 			this.defualt=ImageIO.read(new File(FileLoader.class.getResource("spr_main.png").toURI()));
 		} catch (IOException e) {
