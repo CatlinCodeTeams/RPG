@@ -103,7 +103,6 @@ public class RealPlayer implements Player{
 				switch(c){
 				case 'a':
 					for(int count = 0; count <= 20; count ++){
-<<<<<<< HEAD
 						BasicEnemyIntelligence temp = Graphics.en[count];
 						int play_x = this.getTrueX();
 						int play_y = this.getTrueY();
@@ -125,10 +124,6 @@ public class RealPlayer implements Player{
 								en_down = true;
 							}
 						}
-=======
-						//BasicEnemyIntelligence temp = Graphics.en[count];
-						
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 					}
 					break;
 				case 'd':
@@ -176,7 +171,6 @@ public class RealPlayer implements Player{
 			}catch(Exception e){}
 		}
 	}
-	
 	public void draw(SimplestPen pen){
 		Vector vec = this.draw_location.make_vector(new Point(this.x, this.y));
 		vec.normalize();
