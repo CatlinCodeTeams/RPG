@@ -11,6 +11,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	int range;
 	int x;
 	int y;
+	BufferedImage image;
 
 	@Override
 	public int getAttack() {
@@ -23,38 +24,61 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void takeDamage(int damage) {
 		this.health -= damage;
 
+=======
+	public boolean takeDamage(int damage) {
+		health -= damage;
+		if (health <= 0) {
+			return true;
+		}
+		return false;
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 	}
 
 	@Override
 	public int getSpeed() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return this.speed;
+=======
+		return speed;
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 	}
 
 	@Override
 	public int getX() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return this.x;
+=======
+		return x;
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 	}
 
 	@Override
 	public int getY() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return this.y;
+=======
+		return y;
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 	}
 
 	@Override
 	public BufferedImage getMyImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return image;
 	}
 
 	@Override
 	public boolean drawBackground() {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
+=======
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		return true;
 	}
 
@@ -62,6 +86,10 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	public void takeTurn() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private void die() {
+	
 	}
 
 }
