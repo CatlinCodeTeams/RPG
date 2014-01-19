@@ -35,6 +35,9 @@ public class Graphics extends SimpleGraphics{
 		square_array= new Square[40][30];
 		
 		loadImage("wall.png");
+		loadImage("spr_main.png");
+		loadImage("spr_rat_down2.png");
+		loadImage("spr_sprite.png");
 		
 		for (int k=0; k<10; k++){
 			square_array[5+k][10] =new Wall(this.imgs.get("wall.png"), 200+k*40,400);
