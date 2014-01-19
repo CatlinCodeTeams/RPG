@@ -21,6 +21,10 @@ import javax.imageio.ImageIO;
 import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.enemies.Rat;
+<<<<<<< HEAD
+=======
+import codeday.rpg.interfaces.Enemy;
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
@@ -48,13 +52,10 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
-<<<<<<< HEAD
 		ArrayList<Square> s=new ArrayList<Square>();
-=======
-
 		square_array= new Square[40][30];
-
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
+		ArrayList<Enemy> en=new ArrayList<Enemy>();
+		en.add(new Rat(1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
@@ -76,10 +77,6 @@ public class Graphics extends SimpleGraphics{
 				ls.add(new ArrayList<Square>());
 				for(char c:line.toCharArray()){
 					two++;
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
@@ -114,7 +111,7 @@ public class Graphics extends SimpleGraphics{
 //		
 		this.endProgramOnClose=true;
 		pen.setBackground(new Color(50,50,50));
-		turner=new TurnManager(p,new ArrayList());
+		turner=new TurnManager(p,en);
 		try {
 			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("stone_tile.png").toURI())));
 		} catch (IOException e) {
