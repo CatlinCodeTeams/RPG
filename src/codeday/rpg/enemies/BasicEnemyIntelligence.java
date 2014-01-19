@@ -188,7 +188,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 				} else {
 					square2 = map [square.getTrueX()] [square.getTrueY() + 1];
 				}
-				if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getTrueX()] [square2.getTrueY()] == null || numberMap [square2.getTrueX()] [square2.getTrueY()] > numberMap [square.getTrueX()] [square.getTrueY()] + 1)) {
+				if (square2 instanceof Walkable && (numberMap [square2.getTrueX()] [square2.getTrueY()] == null || numberMap [square2.getTrueX()] [square2.getTrueY()] > numberMap [square.getTrueX()] [square.getTrueY()] + 1)) {
 					numberMap [square2.getTrueX()] [square2.getTrueY()] = numberMap [square.getTrueX()] [square.getTrueY()] + 1;
 					adjacents [count] = square2;
 				}
