@@ -2,6 +2,7 @@ package codeday.main;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -45,6 +46,7 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
+
 		square_array= new Square[40][30];
 
 		loadImage("wall.png");
@@ -68,7 +70,12 @@ public class Graphics extends SimpleGraphics{
 				ls.add(new ArrayList<Square>());
 				for(char c:line.toCharArray()){
 					two++;
+
+					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
+
+
 					if(c=='w'){          
+
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
@@ -79,12 +86,11 @@ public class Graphics extends SimpleGraphics{
 			
 			line=null;
 			reader.close();
-		} catch (IOException e) {
+		}} catch (IOException e) {
 			e.printStackTrace();
 		}
 		square_array = new Square[ls.get(0).size()][ls.size()];
-		System.out.println(ls.size());
-		System.out.println(ls.get(0).size());
+
 		for(int x=0;x<ls.get(0).size();x++){
 			for(int y=0;y<ls.size();y++){
 				square_array[x][y]=ls.get(y).get(x);
@@ -100,7 +106,7 @@ public class Graphics extends SimpleGraphics{
 //		square_array[3][3] = player;
 //		
 		this.endProgramOnClose=true;
-		pen.setBackground(Color.WHITE);
+		pen.setBackground(new Color(50,50,50));
 		turner=new TurnManager(p,new ArrayList());
 		try {
 			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("stone_tile.png").toURI())));
@@ -126,9 +132,7 @@ public class Graphics extends SimpleGraphics{
 	public void update(SimplestPen pen) {
 		Graphics.pen = this.myPen;
 		Graphics.pen.setCameraPosition(p.getX(), p.getY());
-		
-		System.out.println(square_array[9][0]);
-		
+
 	}
 	@Override
 	public void draw(SimplestPen pen) {
@@ -152,4 +156,9 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 	}
-}
+	
+/*	public void onKeyPressed(KeyEvent event, SimplestPen pen) {
+		p.charInput(event.getKeyChar());
+		}*/
+
+	}
