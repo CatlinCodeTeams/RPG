@@ -10,11 +10,7 @@ public class Graphics extends SimpleGraphics{
 	
 	Drawer drawer = new Drawer(background_image);
 
-	@Override
-	public void draw(SimplestPen pen) {
-		drawer.draw();
-		
-	}
+
 
 	@Override
 	public void start(SimplestPen pen) {
@@ -25,6 +21,12 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void update(SimplestPen pen) {
 		Main.pen = this.myPen;
+		
+	}
+	
+	@Override
+	public void draw(SimplestPen pen) {
+		drawer.draw();
 		
 	}
 	@Override
