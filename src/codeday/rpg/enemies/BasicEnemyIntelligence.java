@@ -2,7 +2,9 @@ package codeday.rpg.enemies;
 
 import java.awt.image.BufferedImage;
 
-import codeday.rpg.interfaces.Enemy;
+import codeday.main.Graphics;
+import codeday.main.Graphics.*;
+import codeday.rpg.interfaces.*;
 
 public abstract class BasicEnemyIntelligence implements Enemy {
 	int speed;
@@ -59,12 +61,21 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 
 	@Override
 	public void takeTurn() {
-		// TODO Auto-generated method stub
+		for (Square square : Graphics.square_list) {
+			
+		}
 
 	}
 	
 	private void die() {
 	
+	}
+	
+	public boolean isDead () {
+		if (health <= 0) {
+			return true;
+		}
+		return false;
 	}
 
 }
