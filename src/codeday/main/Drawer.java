@@ -16,36 +16,35 @@ public class Drawer {
 	
 
 	public void draw(){
-		
-		draw_grid();
-		
+
+		//draw_grid();
+
 		Graphics.pen.setColor(new Color(255,255,255));
-		for (Square[] q2: Graphics.square_array){
-			for (Square q: q2){
-			
-				if (q !=null){
-				
-				if (q.drawBackground()){
-					Graphics.pen.drawImage(this.image, q.getX(), q.getY(), 40, 40, 0);
-				}
-				
-				Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
-				
-				}
-				
-				}
-				
-			}
 		
-		for (int x=0; x<Graphics.square_array.length; x++)
-			for (int y=0; y<Graphics.square_array[0].length; y++){
-				
-				if (Graphics.square_array[x][y]==null)
-					Graphics.pen.drawImage(this.image, x*40, y*40, 40, 40, 0);
+		int x=-1;
+		for (Square[] q2: Graphics.square_array){
+			x++;
+			int y=-1;
+			for (Square q: q2){
+				y++;
+				if (q !=null){
+
+					if (q.drawBackground()){
+						Graphics.pen.drawImage("stone_tile.png", q.getX(), q.getY(), 40, 40, 0);
+					}
+
+					Graphics.pen.drawImage("wall.png", q.getX(), q.getY(), 40, 40, 0);
+				}
+				else{
+					Graphics.pen.drawImage("stone_tile.png", x*40, y*40, 40, 40, 0);
+				}
+
 			}
-	
+
+		}
+
 	}
-	
+
 	public void draw_grid(){
 		for (int x=0; x<40; x++){
 			Graphics.pen.drawLine(40*x, 0, 40*x, 600);
