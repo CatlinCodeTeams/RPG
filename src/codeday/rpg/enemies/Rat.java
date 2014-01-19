@@ -1,8 +1,5 @@
 package codeday.rpg.enemies;
 
-import java.awt.image.BufferedImage;
-
-import codeday.rpg.enemies.BasicEnemyIntelligence;
 
 public class Rat extends BasicEnemyIntelligence{
 	public Rat(int in_x,int in_y){

@@ -3,8 +3,8 @@ package codeday.rpg.enemies;
 import java.awt.image.BufferedImage;
 
 import codeday.main.Graphics;
-import codeday.main.Graphics.*;
-import codeday.rpg.interfaces.*;
+import codeday.rpg.interfaces.Enemy;
+import codeday.rpg.interfaces.Square;
 
 public abstract class BasicEnemyIntelligence implements Enemy {
 	int speed;
@@ -13,6 +13,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	int range;
 	int x;
 	int y;
+	int streanth;
 	BufferedImage image;
 
 	@Override
@@ -76,6 +77,9 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			return true;
 		}
 		return false;
+	}
+	public int getStrenth(){
+		return streanth;
 	}
 
 }
