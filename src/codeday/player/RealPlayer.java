@@ -91,21 +91,30 @@ public class RealPlayer implements Player{
 			Enemy temp = Graphics.en.get(count);
 			int temp_x = temp.getX();
 		}
-		
-		if ((c == 'a')&&(Graphics.square_array[this.getX()/40-1][this.getY()/40]==null)){
-			this.x -=40;
+		try{
+		switch(c){
+		case 'a':
+			if(Graphics.square_array[this.getX()+1][this.getY()]==null){
+				this.x+=1;
+			}
+			break;
+		case 'd':
+		if(Graphics.square_array[this.getX()-1][this.getY()]==null){
+			this.x-=1;
 		}
-		if ((c=='d')&&(Graphics.square_array[this.getX()/40+1][this.getY()/40]==null)){
-			this.x+=40;
+		break;
+		case 'w':
+			if(Graphics.square_array[this.getX()][this.getY()-1]==null){
+				this.y-=1;
+			}
+			break;
+		case 's':
+			if(Graphics.square_array[this.getX()][this.getY()+1]==null){
+				this.y+=1;
+			}
+			break;
 		}
-		if ((c=='w')&&(Graphics.square_array[this.getX()/40][this.getY()/40-1]==null)){
-			this.y-=40;
-		}
-		if ((c=='s')&&(Graphics.square_array[this.getX()/40][this.getY()/40+1]==null)){
-			this.y+=40;
-		}
-		
-		
+		}catch(Exception e){}
 	}
 	
 	public void draw(SimplestPen pen){

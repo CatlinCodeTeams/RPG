@@ -1,10 +1,11 @@
 package codeday.main;
 
+import janus.engine.SimpleGraphics;
+import janus.engine.pens.SimplestPen;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -26,8 +26,6 @@ import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
 import codeday.walls.Wall;
-import janus.engine.SimpleGraphics;
-import janus.engine.pens.SimplestPen;
 
 public class Graphics extends SimpleGraphics{
 
@@ -50,7 +48,6 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
-		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
 		en=new ArrayList<Enemy>();
 		loadImage("wall.png");
