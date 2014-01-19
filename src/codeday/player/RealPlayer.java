@@ -71,7 +71,7 @@ public class RealPlayer implements Player{
 
 	@Override
 	public boolean drawBackground() {
-		return false;
+		return true;
 	}
 
 	@Override
