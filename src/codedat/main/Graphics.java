@@ -1,11 +1,13 @@
 package codedat.main;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
+
 import codeday.rpg.resource.sprites.FileLoader;
 import janus.engine.SimpleGraphics;
 import janus.engine.pens.SimplestPen;
@@ -23,6 +25,8 @@ public class Graphics extends SimpleGraphics{
 	
 	@Override
 	public void start(SimplestPen pen) {
+		pen.setBackground(new Color(255,255,255));
+		
 		// TODO Auto-generated method stub
 		turner=new TurnManager(null,null);
 		try {
