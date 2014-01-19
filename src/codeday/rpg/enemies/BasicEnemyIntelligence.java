@@ -1,8 +1,9 @@
 package codeday.rpg.enemies;
 
 import java.awt.image.BufferedImage;
-import codeday.rpg.interfaces.*;
+import java.util.ArrayList;
 
+import codeday.rpg.interfaces.*;
 import codeday.main.Graphics;
 import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Square;
@@ -101,6 +102,24 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 				break;
 			}
 		}
+		ArrayList<Square> possibleMoves = new ArrayList<Square> ();
+		//start crap
+		if (this.getX() != 0) {
+			possibleMoves.add(map [this.getX() - 1] [this.getY()]);
+		}
+		if (this.getX() != Graphics.mapWidth) {
+			possibleMoves.add(map [this.getX() + 1] [this.getY()]);
+		}
+		if (this.getY() != 0) {
+			possibleMoves.add(map [this.getX()] [this.getY() - 1]);
+		}
+		if (this.getX() != Graphics.mapLength) {
+			possibleMoves.add(map [this.getX()] [this.getY() + 1]);
+		}
+		//end crap
+		if (!possibleMoves.isEmpty()) {
+			
+		}
 	}
 
 	private void distanceMap (Square square, Square [] [] map, Integer [] [] numberMap) {
@@ -113,7 +132,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			available [0] = false;
 			}
 		if (square.getX() == Graphics.mapWidth) {
-			available [1]] = false;
+			available [1] = false;
 			}
 		if (square.getY() == 0) {
 			available[3] = false;
@@ -125,17 +144,15 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		Square [] adjacents = new Square [4];
 		for (int count = 0; count <= 3; count ++) {
 			if (available [count]) {
+				Square square2 = null;
 				if (count == 0) {
-					Square square2 = map [square.getX() - 1] [square.getY()];
-				}
-				if (count == 1) {
-					Square square2 = map [square.getX() + 1] [square.getY()];
-				}
-				if (count == 2) {
-					Square square2 = map [square.getX()] [square.getY() - 1];
-				}
-				if (count == 3) {
-					Square square2 = map [square.getX()] [square.getY() + 1];
+					square2 = map [square.getX() - 1] [square.getY()];
+				} else if (count == 1) {
+					square2 = map [square.getX() + 1] [square.getY()];
+				} else if (count == 2) {
+					square2 = map [square.getX()] [square.getY() - 1];
+				} else {
+					square2 = map [square.getX()] [square.getY() + 1];
 				}
 				if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getX()] [square2.getY()] == null || numberMap [square2.getX()] [square2.getY()] > numberMap [square.getX()] [square.getY()] + 1)) {
 					numberMap [square2.getX()] [square2.getY()] = numberMap [square.getX()] [square.getY()] + 1;
