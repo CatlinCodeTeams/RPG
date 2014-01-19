@@ -24,7 +24,7 @@ public class Graphics extends SimpleGraphics{
 
 	public static Drawer drawer;
 	
-	public static ArrayList<Square> square_list;
+	public static Square[][] square_array;
 	public static SimplestPen pen;
 	public static int mapWidth;
 	public static int mapLength;
@@ -36,7 +36,7 @@ public class Graphics extends SimpleGraphics{
 		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
-		square_list= new ArrayList<Square>();
+		square_array= new Square[mapWidth][mapLength];
 		turner=new TurnManager(null,null);
 		try {
 			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("spr_left.png").toURI())));

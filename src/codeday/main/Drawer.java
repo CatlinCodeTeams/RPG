@@ -21,16 +21,24 @@ public class Drawer {
 		
 		Graphics.pen.setColor(new Color(255,255,255));
 		
-		for (Square q: Graphics.square_list){
+		for (Square[] q2: Graphics.square_array){
+			for (Square q: q2){
 			
-			BufferedImage image = q.getMyImage();
-			
-			if (q.drawBackground()){
-				Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+				if (q !=null){
+				BufferedImage image = q.getMyImage();
+				
+				if (q.drawBackground()){
+					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+				}
+				
+				Graphics.pen.simplePen.drawImage(image, q.getX(), q.getY(), 40, 40, null);}
+				
+				else
+					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+				
+				}
+				
 			}
-			
-			Graphics.pen.simplePen.drawImage(image, q.getX(), q.getY(), 40, 40, null);
-		}
 	
 	}
 	
