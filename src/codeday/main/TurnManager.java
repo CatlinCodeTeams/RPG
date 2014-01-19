@@ -18,7 +18,7 @@ public class TurnManager {
 			running=true;
 			player.charInput(input);
 			for(Enemy e: enimies){
-				e.takeTurn();
+				//e.takeTurn();
 			}
 			running=false;
 		}

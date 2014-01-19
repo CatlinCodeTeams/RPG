@@ -3,8 +3,10 @@ package codeday.main;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
 import codeday.rpg.interfaces.Enemy;
 import codeday.rpg.interfaces.Square;
+import codeday.walls.Wall;
 
 public class Drawer {
 	
@@ -32,10 +34,12 @@ public class Drawer {
 			for (Square q: q2){
 				y++;
 				if ((q !=null)&&(q.getMyImage()!=null)){
-
+					
+					
 					if (q.drawBackground()){
 						Graphics.pen.drawImage("stone_tile.png", q.getX(), q.getY(), 40, 40, 0);
 					}
+
 
 					Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
 					
