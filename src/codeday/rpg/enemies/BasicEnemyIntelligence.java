@@ -11,6 +11,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	int range;
 	int x;
 	int y;
+	BufferedImage image;
 
 	@Override
 	public int getAttack() {
@@ -23,45 +24,47 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	}
 
 	@Override
-	public void takeDamage(int damage) {
-		// TODO Auto-generated method stub
-
+	public boolean takeDamage(int damage) {
+		health -= damage;
+		if (health <= 0) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public int getSpeed() {
-		// TODO Auto-generated method stub
-		return 0;
+		return speed;
 	}
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	@Override
 	public BufferedImage getMyImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return image;
 	}
 
 	@Override
 	public boolean drawBackground() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void takeTurn() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private void die() {
+	
 	}
 
 }
