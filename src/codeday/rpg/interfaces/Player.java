@@ -1,5 +1,5 @@
 package codeday.rpg.interfaces;
 
 public interface Player extends Attacker{
-	//TODO
+	public void charInput(char c);
 }
