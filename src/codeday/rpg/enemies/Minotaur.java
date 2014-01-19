@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-package codeday.rpg.enemies;
 
-public class Minotaur {
-
-}
-=======
 package codeday.rpg.enemies;
 
 import java.awt.image.BufferedImage;
@@ -23,4 +17,3 @@ public class Minotaur extends BasicEnemyIntelligence{
 	}
 
 }
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
