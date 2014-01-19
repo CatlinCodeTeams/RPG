@@ -20,7 +20,6 @@ public class Drawer {
 		draw_grid();
 		
 		Graphics.pen.setColor(new Color(255,255,255));
-		
 		for (Square[] q2: Graphics.square_array){
 			for (Square q: q2){
 			
@@ -30,11 +29,19 @@ public class Drawer {
 					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
 				}
 				
-				Graphics.pen.drawImage("wall.png", q.getX(), q.getY(), 40, 40, 0);}
-
+				Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
 				
 				}
 				
+				}
+				
+			}
+		
+		for (int x=0; x<40; x++)
+			for (int y=0; y<30; y++){
+				
+				if (Graphics.square_array[x][y]==null)
+					Graphics.pen.drawImage(this.image, x*40, y*40, 40, 40, 0);
 			}
 	
 	}

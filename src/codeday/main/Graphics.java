@@ -38,13 +38,19 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
+<<<<<<< HEAD
 		ArrayList<Square> s=new ArrayList<Square>();
 		BufferedInputStream stream=new BufferedInputStream(FileLoader.class.getResourceAsStream("map1.txt"));
 		square_array= new Square[40][30];
+=======
+		
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
 		loadImage("spr_sprite.png");
+		
+		square_array = new Square[40][30];
 		
 		for (int k=0; k<10; k++){
 			square_array[5+k][10] =new Wall(this.imgs.get("wall.png"), 200+k*40,400);
@@ -56,7 +62,7 @@ public class Graphics extends SimpleGraphics{
 		pen.setBackground(Color.WHITE);
 		turner=new TurnManager(null,null);
 		try {
-			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("spr_left.png").toURI())));
+			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("stone_tile.png").toURI())));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
