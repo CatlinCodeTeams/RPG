@@ -45,11 +45,21 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+		ArrayList<Square> s=new ArrayList<Square>();
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		square_array= new Square[40][30];
+
+=======
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
 		loadImage("spr_sprite.png");
+		loadImage("stone_tile.png");
 		ArrayList<ArrayList<Square>> ls=new ArrayList<ArrayList<Square>>();
 		BufferedReader reader=null;
 		try {
@@ -66,7 +76,11 @@ public class Graphics extends SimpleGraphics{
 				ls.add(new ArrayList<Square>());
 				for(char c:line.toCharArray()){
 					two++;
+<<<<<<< HEAD
 					if(c=='w'){
+=======
+					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
@@ -124,6 +138,8 @@ public class Graphics extends SimpleGraphics{
 	public void update(SimplestPen pen) {
 		Graphics.pen = this.myPen;
 		Graphics.pen.setCameraPosition(p.getX(), p.getY());
+		
+		System.out.println(square_array[9][0]);
 		
 	}
 	@Override

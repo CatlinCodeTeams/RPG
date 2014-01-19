@@ -13,7 +13,11 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	int range;
 	int x;
 	int y;
+<<<<<<< HEAD
+	int strength;
+=======
 	int streanth;
+>>>>>>> ec96287ef8950cfd12fbd4184aa05a4992f5f7db
 	BufferedImage image;
 
 	@Override
@@ -62,9 +66,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 
 	@Override
 	public void takeTurn() {
-		for (Square square : Graphics.square_list) {
-			
-		}
+		int [] [] map = int [width] [length];
 
 	}
 	
@@ -82,4 +84,44 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		return streanth;
 	}
 
+	private Square [] distanceMap (Square square) {
+		boolean [] [] available = new boolean [3] [3];
+		for (int countX = 0; countX <= 2; countX ++) {
+			for (int countY = 0; countY <= 2; countY ++) {
+				available[countX] [countY] = true;
+			}
+		}
+		//start crap
+		available [1] [1] = false;
+		if (square.getX() == 0) {
+			for (int count = 0; count <= 2; count ++) {
+				available [0] [count] = false;
+			}
+		}
+		if (square.getX() == Graphics.mapWidth) {
+			for (int count = 0; count <= 2; count ++) {
+				available [Graphics.mapWidth] [count] = false;
+			}
+		}
+		if (square.getY() == 0) {
+			for (int count = 0; count <= 2; count ++) {
+				available [count] [0] = false;
+			}
+		}
+		if (square.getY() == Graphics.mapLength) {
+			for (int count = 0; count <= 2; count ++) {
+				available [count] [Graphics.mapLength] = false;
+			}
+		}
+		//end crap
+		Square [] adjacents = new Square [8];
+		int indexCount = 0;
+		for (int countX = 0; countX <= 2; countX ++) {
+			for (int countY = 0; countY <= 2; countY ++) {
+				if (available [countX] [countY]) {
+					adjacents [indexCount] = 
+				}
+			}
+		}
+	}
 }
