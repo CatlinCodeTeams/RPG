@@ -35,7 +35,7 @@ public class Drawer {
 			Graphics.pen.drawLine(40*x, 0, 40*x, 600);
 		}
 		for (int y=0; y<30; y++){
-			Graphics.pen.drawLine(0, 40*y, 800, 40*y)
+			Graphics.pen.drawLine(0, 40*y, 800, 40*y);
 			}
 	}
 	
