@@ -16,6 +16,9 @@ public class Drawer {
 	
 
 	public void draw(){
+		
+		draw_grid();
+		
 		Graphics.pen.setColor(new Color(255,255,255));
 		
 		for (Square q: Graphics.square_list){
