@@ -159,6 +159,17 @@ public class RealPlayer implements Player{
 		
 		this.draw_location.move(vec);
 	}
+<<<<<<< HEAD
 	
+=======
+	@Override
+	public int getTrueX() {
+		return x/40;
+	}
+	@Override
+	public int getTrueY() {
+		return x/40;
+	}
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 
 }
