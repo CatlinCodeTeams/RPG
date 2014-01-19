@@ -186,4 +186,10 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 			distanceMap (adjacent, map, numberMap);
 		}
 	}
+	public int getTrueX(){
+		return getX();
+	}
+	public int getTrueY(){
+		return getY();
+	}
 }

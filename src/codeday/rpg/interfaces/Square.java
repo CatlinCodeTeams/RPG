@@ -4,6 +4,10 @@ import java.awt.image.BufferedImage;
 
 public interface Square {
 	//returns x in array
+	public int getTrueX();
+	//returns y in array
+	public int getTrueY();
+	//returns x in array
 	public int getX();
 	//returns y in array
 	public int getY();

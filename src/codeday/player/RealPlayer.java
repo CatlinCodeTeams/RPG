@@ -116,5 +116,13 @@ public class RealPlayer implements Player{
 		
 		this.draw_location.move(vec);
 	}
+	@Override
+	public int getTrueX() {
+		return x/40;
+	}
+	@Override
+	public int getTrueY() {
+		return x/40;
+	}
 
 }
