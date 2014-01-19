@@ -102,7 +102,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		for (Square [] mapColumn : map) {
 			for (Square mapCell : mapColumn) {
 				if (mapCell instanceof Player) {
-					numberMap [mapCell.getTrueX() / 40] [mapCell.getTrueY() / 40] = 0;
+					numberMap [mapCell.getTrueX()] [mapCell.getTrueY()] = 0;
 					distanceMap (mapCell, map, numberMap);
 					done = true;
 					break;
