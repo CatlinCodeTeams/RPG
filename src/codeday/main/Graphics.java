@@ -3,6 +3,7 @@ package codeday.main;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -37,8 +38,9 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
+		ArrayList<Square> s=new ArrayList<Square>();
+		BufferedInputStream stream=new BufferedInputStream(FileLoader.class.getResourceAsStream("map1.txt"));
 		square_array= new Square[40][30];
-		
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
