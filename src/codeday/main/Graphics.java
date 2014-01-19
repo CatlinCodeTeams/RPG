@@ -73,6 +73,9 @@ public class Graphics extends SimpleGraphics{
 
 					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
 
+
+					if(c=='w'){          
+
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
@@ -83,7 +86,7 @@ public class Graphics extends SimpleGraphics{
 			
 			line=null;
 			reader.close();
-		} catch (IOException e) {
+		}} catch (IOException e) {
 			e.printStackTrace();
 		}
 		square_array = new Square[ls.get(0).size()][ls.size()];
