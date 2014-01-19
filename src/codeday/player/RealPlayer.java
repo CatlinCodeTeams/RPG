@@ -52,7 +52,7 @@ public class RealPlayer implements Player{
 
 	@Override
 	public boolean isDead() {
-		return health>0;
+		return health>0; 
 	}
 
 	@Override
@@ -77,18 +77,30 @@ public class RealPlayer implements Player{
 
 	@Override
 	public void charInput(char c) {
-		if ((c=='a')&&(Graphics.square_array[this.getX()/40-1][getY()/40]==null)){
-			this.x-=40;
+		try{
+		switch(c){
+		case 'a':
+			if(Graphics.square_array[this.getX()+1][this.getY()]==null){
+				this.x+=1;
+			}
+			break;
+		case 'd':
+		if(Graphics.square_array[this.getX()-1][this.getY()]==null){
+			this.x-=1;
 		}
-		else if ((c=='d')&&(Graphics.square_array[this.getX()/40+1][getY()/40]==null)){
-			this.x+=40;
+		break;
+		case 'w':
+			if(Graphics.square_array[this.getX()][this.getY()-1]==null){
+				this.y-=1;
+			}
+			break;
+		case 's':
+			if(Graphics.square_array[this.getX()][this.getY()+1]==null){
+				this.y+=1;
+			}
+			break;
 		}
-		else if ((c=='w')&&(Graphics.square_array[this.getX()/40][getY()/40-1]==null)){
-			this.y-=40;
-		}
-		else if ((c=='s')&&(Graphics.square_array[this.getX()/40][getY()/40+1]==null)){
-			this.y+=40;
-		}
+		}catch(Exception e){}
 	}
 
 }
