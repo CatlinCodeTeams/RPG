@@ -117,7 +117,7 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 		
-		square_array[6][6] = new Rat(this.imgs.get("spr_rat_down2"), 240, 240);
+		square_array[6][6] = new Rat(240, 240);
 	}
 	public void chuckNorris(Square[][] s){
 		int num1=new Random().nextInt(s.length);
