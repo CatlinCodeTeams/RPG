@@ -2,6 +2,7 @@ package codeday.main;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import codeday.rpg.interfaces.Square;
 
@@ -20,6 +21,7 @@ public class Drawer {
 		//draw_grid();
 
 		Graphics.pen.setColor(new Color(255,255,255));
+
 		
 		int x=-1;
 		for (Square[] q2: Graphics.square_array){
@@ -33,7 +35,8 @@ public class Drawer {
 						Graphics.pen.drawImage("stone_tile.png", q.getX(), q.getY(), 40, 40, 0);
 					}
 
-					Graphics.pen.drawImage("wall.png", q.getX(), q.getY(), 40, 40, 0);
+					Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
+
 				}
 				else{
 					Graphics.pen.drawImage("stone_tile.png", x*40, y*40, 40, 40, 0);
@@ -42,7 +45,7 @@ public class Drawer {
 			}
 
 		}
-
+		Graphics.pen.drawImage(Graphics.p.getMyImage(), Graphics.p.getX(), Graphics.p.getY(), 40, 40, 0);
 	}
 
 	public void draw_grid(){
