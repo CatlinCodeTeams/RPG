@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 
 import javax.imageio.ImageIO;
 
+import codeday.main.Graphics;
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.resource.sprites.FileLoader;
 public class RealPlayer implements Player{
@@ -76,7 +77,30 @@ public class RealPlayer implements Player{
 
 	@Override
 	public void charInput(char c) {
-		//AI goes here
+		try{
+		switch(c){
+		case 'a':
+			if(Graphics.square_array[this.getX()+1][this.getY()]==null){
+				this.x+=1;
+			}
+			break;
+		case 'd':
+		if(Graphics.square_array[this.getX()-1][this.getY()]==null){
+			this.x-=1;
+		}
+		break;
+		case 'w':
+			if(Graphics.square_array[this.getX()][this.getY()-1]==null){
+				this.y-=1;
+			}
+			break;
+		case 's':
+			if(Graphics.square_array[this.getX()][this.getY()+1]==null){
+				this.y+=1;
+			}
+			break;
+		}
+		}catch(Exception e){}
 	}
 
 }

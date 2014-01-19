@@ -13,10 +13,12 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
 import codeday.player.RealPlayer;
+import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
 import codeday.walls.Wall;
@@ -29,6 +31,7 @@ public class Graphics extends SimpleGraphics{
 		super(800, 600, "RPG");
 		
 	}
+	public static Player p;
 	public static TurnManager turner;
 
 	public static Drawer drawer;
@@ -42,8 +45,11 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
+<<<<<<< HEAD
+=======
 
 		ArrayList<Square> s=new ArrayList<Square>();
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		square_array= new Square[40][30];
 
 		loadImage("wall.png");
@@ -67,14 +73,19 @@ public class Graphics extends SimpleGraphics{
 				ls.add(new ArrayList<Square>());
 				for(char c:line.toCharArray()){
 					two++;
+<<<<<<< HEAD
+					if(c=='w'){
+=======
 					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
+>>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
-					else{
+					else if(c==' '){
 						ls.get(ls.size()-1).add(null);
 					}
 				}
 			}
+			
 			line=null;
 			reader.close();
 		} catch (IOException e) {
@@ -88,6 +99,7 @@ public class Graphics extends SimpleGraphics{
 				square_array[x][y]=ls.get(y).get(x);
 			}
 		}
+		chuckNorris(square_array);
 //		
 //		
 //		for (int k=0; k<10; k++){
@@ -98,7 +110,7 @@ public class Graphics extends SimpleGraphics{
 //		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
-		turner=new TurnManager(null,null);
+		turner=new TurnManager(p,new ArrayList());
 		try {
 			drawer=new Drawer(ImageIO.read(new File(FileLoader.class.getResource("stone_tile.png").toURI())));
 		} catch (IOException e) {
@@ -107,10 +119,22 @@ public class Graphics extends SimpleGraphics{
 			e.printStackTrace();
 		}
 	}
-
+	public void chuckNorris(Square[][] s){
+		int num1=new Random().nextInt(s.length);
+		Square[] ch=s[num1];
+		int num=new Random().nextInt(ch.length);
+		if(ch[num]==null){
+			p=new RealPlayer(this.imgs.get("spr_main.png"), num*40, num1*40);
+			ch[num]= p;
+		}
+		else{
+			chuckNorris(s);
+		}
+	}
 	@Override
 	public void update(SimplestPen pen) {
 		Graphics.pen = this.myPen;
+		Graphics.pen.setCameraPosition(p.getX(), p.getY());
 		
 		System.out.println(square_array[9][0]);
 		
@@ -123,7 +147,11 @@ public class Graphics extends SimpleGraphics{
 
 	@Override
 	public void onKeyTyped(KeyEvent e,SimplestPen pen){
-		
+		if(e.getKeyChar()=='r'){
+			pen.restart();
+			return;
+		}
+		turner.input(e.getKeyChar());
 	}
 	private void loadImage(String name) {
 		try {
