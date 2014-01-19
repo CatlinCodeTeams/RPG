@@ -7,18 +7,21 @@ import codeday.rpg.interfaces.Enemy;
 public class Rat implements Enemy{
 
 	public Rat(int x,int y){
+		int life = 10;
+		int dam = 10;
+		
 		
 	}
 	@Override
 	public int getAttack() {
 		// TODO Auto-generated method stub
-		return 20;
+		return 5;
 	}
 
 	@Override
 	public int getHealth() {
 		// TODO Auto-generated method stub
-		return 10;
+		return this.life;
 	}
 
 	@Override
