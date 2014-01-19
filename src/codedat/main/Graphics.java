@@ -1,8 +1,9 @@
 package codedat.main;
+import java.awt.event.KeyEvent;
+
 import janus.engine.SimpleGraphics;
 import janus.engine.pens.SimplestPen;
 public class Graphics extends SimpleGraphics{
-
 	protected Graphics() {
 		super(800, 600, "RPG");
 	}
@@ -26,5 +27,7 @@ public class Graphics extends SimpleGraphics{
 		Main.pen = this.myPen;
 		
 	}
-
+	@Override
+	public void onKeyTyped(KeyEvent e,SimplestPen pen){
+	}
 }
