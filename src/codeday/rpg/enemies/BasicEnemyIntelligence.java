@@ -5,17 +5,21 @@ import java.awt.image.BufferedImage;
 import codeday.rpg.interfaces.Enemy;
 
 public abstract class BasicEnemyIntelligence implements Enemy {
+	int speed;
+	int damage;
+	int health;
+	int range;
+	int x;
+	int y;
 
 	@Override
 	public int getAttack() {
-		// TODO Auto-generated method stub
-		return 0;
+		return damage;
 	}
 
 	@Override
 	public int getHealth() {
-		// TODO Auto-generated method stub
-		return 0;
+		return health;
 	}
 
 	@Override
