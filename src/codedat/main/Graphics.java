@@ -21,7 +21,7 @@ public class Graphics extends SimpleGraphics{
 
 	@Override
 	public void update(SimplestPen pen) {
-		// TODO Auto-generated method stub
+		Main.pen = this.myPen;
 		
 	}
 
