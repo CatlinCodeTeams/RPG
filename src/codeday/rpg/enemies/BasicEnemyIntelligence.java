@@ -24,26 +24,26 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 
 	@Override
 	public void takeDamage(int damage) {
-		// TODO Auto-generated method stub
+		this.health -= damage;
 
 	}
 
 	@Override
 	public int getSpeed() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.speed;
 	}
 
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.y;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	@Override
 	public boolean drawBackground() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
