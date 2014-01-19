@@ -1,6 +1,7 @@
 package codeday.rpg.enemies;
 
 import java.awt.image.BufferedImage;
+import codeday.rpg.interfaces.*;
 
 import codeday.main.Graphics;
 import codeday.rpg.interfaces.Enemy;
@@ -13,11 +14,7 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 	int range;
 	int x;
 	int y;
-<<<<<<< HEAD
 	int strength;
-=======
-	int streanth;
->>>>>>> ec96287ef8950cfd12fbd4184aa05a4992f5f7db
 	BufferedImage image;
 
 	@Override
@@ -66,7 +63,11 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 
 	@Override
 	public void takeTurn() {
-		int [] [] map = int [width] [length];
+		Square [] [] map = Graphics.square_array;
+		//attack shit
+		move (map);
+		
+		
 
 	}
 	
@@ -81,10 +82,28 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		return false;
 	}
 	public int getStrenth(){
-		return streanth;
+		return strength;
+	}
+	
+	private void move (Square [] [] map) {
+		Integer [] [] numberMap = new Integer [Graphics.mapWidth] [Graphics.mapLength];
+		boolean done = false;
+		for (Square [] mapColumn : map) {
+			for (Square mapCell : mapColumn) {
+				if (mapCell instanceof Player) {
+					numberMap [mapCell.getX()] [mapCell.getY()] = 0;
+					distanceMap (mapCell, map, numberMap);
+					done = true;
+					break;
+				}
+			}
+			if (done) {
+				break;
+			}
+		}
 	}
 
-	private Square [] distanceMap (Square square) {
+	private void distanceMap (Square square, Square [] [] map, Integer [] [] numberMap) {
 		boolean [] [] available = new boolean [3] [3];
 		for (int countX = 0; countX <= 2; countX ++) {
 			for (int countY = 0; countY <= 2; countY ++) {
@@ -119,9 +138,16 @@ public abstract class BasicEnemyIntelligence implements Enemy {
 		for (int countX = 0; countX <= 2; countX ++) {
 			for (int countY = 0; countY <= 2; countY ++) {
 				if (available [countX] [countY]) {
-					adjacents [indexCount] = 
+					 Square square2 = adjacents [indexCount] = map [square.getX() - 1 + countX] [square.getY() - 1 + countY];
+					 if ((square2 instanceof Walkable || square2 == null) && (numberMap [square2.getX()] [square2.getY()] == null || numberMap [square2.getX()] [square2.getY()] > numberMap [square.getX()] [square.getY()] + 1)) {
+						 numberMap [square2.getX()] [square2.getY()] = numberMap [square.getX()] [square.getY()] + 1;
+						 adjacents [indexCount] = square2;
+					 }
 				}
 			}
+		}
+		for (Square adjacent : adjacents) {
+			distanceMap (adjacent, map, numberMap);
 		}
 	}
 }
