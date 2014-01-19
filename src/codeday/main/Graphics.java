@@ -42,6 +42,7 @@ public class Graphics extends SimpleGraphics{
 		for (int k=0; k<10; k++){
 			square_array[5+k][10] =new Wall(this.imgs.get("wall.png"), 200+k*40,400);
 		}
+
 		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
