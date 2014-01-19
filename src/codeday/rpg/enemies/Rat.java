@@ -15,7 +15,7 @@ int range;
 		x = in_x;
 		y = in_y;
 		life = 10;
-		dam = 5;
+		dam = 2;
 		speed = 1; 
 		range = 1;
 		
