@@ -45,11 +45,6 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
-<<<<<<< HEAD
-=======
-
-		ArrayList<Square> s=new ArrayList<Square>();
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		square_array= new Square[40][30];
 
 		loadImage("wall.png");
@@ -73,11 +68,7 @@ public class Graphics extends SimpleGraphics{
 				ls.add(new ArrayList<Square>());
 				for(char c:line.toCharArray()){
 					two++;
-<<<<<<< HEAD
-					if(c=='w'){
-=======
-					if(c=='w'){                                               //Random blocks were dissapearing when called to draw, swithcing one and two seems to fix it.
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
+					if(c=='w'){          
 						ls.get(ls.size()-1).add(new Wall(this.imgs.get("wall.png"),two*40,one*40));
 					}
 					else if(c==' '){
