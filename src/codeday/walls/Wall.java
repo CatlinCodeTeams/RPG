@@ -49,13 +49,13 @@ public class Wall implements NonWalkable{
 
 
 	@Override
-	public int getTrueX() {
+	public int getX() {
 		return getX();
 	}
 
 
 	@Override
-	public int getTrueY() {
+	public int getY() {
 		// TODO Auto-generated method stub
 		return getY();
 	}
