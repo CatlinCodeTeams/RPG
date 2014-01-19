@@ -26,7 +26,7 @@ public class Drawer {
 				if (q !=null){
 				
 				if (q.drawBackground()){
-					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
+					Graphics.pen.drawImage(this.image, q.getX(), q.getY(), 40, 40, 0);
 				}
 				
 				Graphics.pen.drawImage(q.getMyImage(), q.getX(), q.getY(), 40, 40, 0);
