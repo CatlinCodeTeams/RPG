@@ -103,7 +103,7 @@ public class RealPlayer implements Player{
 				switch(c){
 				case 'a':
 					for(int count = 0; count <= 20; count ++){
-						BasicEnemyIntelligence temp = Graphics.en[count];
+						//BasicEnemyIntelligence temp = Graphics.en[count];
 						
 					}
 					break;

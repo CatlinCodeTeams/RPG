@@ -19,12 +19,12 @@ public class Fire_Trap extends BasicTrap{
 	}
 
 	@Override
-	public int getX() {
+	public int getTrueX() {
 		return getX();
 	}
 
 	@Override
-	public int getY() {
+	public int getTrueY() {
 		// TODO Auto-generated method stub
 		return getY();
 	}
