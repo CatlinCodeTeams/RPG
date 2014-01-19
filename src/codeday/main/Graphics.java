@@ -2,13 +2,16 @@ package codeday.main;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import codeday.player.RealPlayer;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
 import codeday.walls.Wall;
@@ -29,9 +32,11 @@ public class Graphics extends SimpleGraphics{
 	public static SimplestPen pen;
 	public static int mapWidth;
 	public static int mapLength;
+	public static HashMap<String,BufferedImage> img;
 	
 	@Override
 	public void start(SimplestPen pen) {
+		img=imgs;
 		square_array= new Square[40][30];
 		
 		loadImage("wall.png");
@@ -42,7 +47,8 @@ public class Graphics extends SimpleGraphics{
 		for (int k=0; k<10; k++){
 			square_array[5+k][10] =new Wall(this.imgs.get("wall.png"), 200+k*40,400);
 		}
-
+		RealPlayer player = new RealPlayer(this.imgs.get("spr_main.png"), 120,120);
+		square_array[3][3] = player;
 		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);

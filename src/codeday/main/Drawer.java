@@ -30,7 +30,7 @@ public class Drawer {
 					Graphics.pen.simplePen.drawImage(this.image, q.getX(), q.getY(), 40, 40, null);
 				}
 				
-				Graphics.pen.drawImage("wall.png", q.getX(), q.getY(), 40, 40, 0);}
+				Graphics.pen.drawImage(Graphics.img.get(""), q.getX(), q.getY(), 40, 40, 0);}
 
 				
 				}
