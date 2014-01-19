@@ -21,7 +21,10 @@ public class RealPlayer implements Player{
 	int damage=5;
 	int x;
 	int y;
-	
+	int _top_;
+	int _right_;
+	int _down_;
+	int _left_;
 	Point draw_location;
 	
 	BufferedImage image;
@@ -100,10 +103,10 @@ public class RealPlayer implements Player{
 				Enemy temp = Graphics.en.get(count);
 				int temp_x = temp.getX();
 				int temp_y = temp.getY();
-				int _top_ = -1;
-				int _right_ = -1;
-				int _down_ = -1;
-				int _left_ = -1;
+				_top_ = -1;
+				_right_ = -1;
+				_down_ = -1;
+				_left_ = -1;
 				if (play_x-temp_x >=-1 && play_x-temp_x <=1 && play_y == temp_y){
 					if (play_x-temp_x < 0){
 						_right_ = count;
@@ -121,68 +124,68 @@ public class RealPlayer implements Player{
 					}
 				}
 			}
+		}
 
-			if (attack_mode == false){
-				try{
-					switch(c){
-					case 'a':
-						if(Graphics.square_array[this.getX()+1][this.getY()]==null){
-							this.x+=1;
-						}
-						break;
-					case 'd':
-						if(Graphics.square_array[this.getX()-1][this.getY()]==null){
-							this.x-=1;
-						}
-						break;
-					case 'w':
-						if(Graphics.square_array[this.getX()][this.getY()-1]==null){
-							this.y-=1;
-						}
-						break;
-					case 's':
-						if(Graphics.square_array[this.getX()][this.getY()+1]==null){
-							this.y+=1;
-						}
-						break;
+		if (attack_mode == false){
+			try{
+				switch(c){
+				case 'a':
+					if(Graphics.square_array[this.getX()+1][this.getY()]==null){
+						this.x+=1;
 					}
+					break;
+				case 'd':
+					if(Graphics.square_array[this.getX()-1][this.getY()]==null){
+						this.x-=1;
+					}
+					break;
+				case 'w':
+					if(Graphics.square_array[this.getX()][this.getY()-1]==null){
+						this.y-=1;
+					}
+					break;
+				case 's':
+					if(Graphics.square_array[this.getX()][this.getY()+1]==null){
+						this.y+=1;
+					}
+					break;
 				}
 			}catch(Exception e){}
-			if (attack_mode == true){
-				try{
-					switch(c){
-					case 'a':
-						if(this._left_ != -1){
-							Graphics.en.get(_left_).takeDamage(this.damage);
-						}
-						break;
-					case 'd':
-						if(_right_ != -1){
-							Graphics.en.get(_right_).takeDamage(this.damage);
-						}
-						break;
-					case 'w':
-						if(_top_ != -1){
-							Graphics.en.get(_top_).takeDamage(this.damage);
-						}
-						break;
-					case 's':
-						if(_down_ != -1){
-							Graphics.en.get(_down_).takeDamage(this.damage);
-						}
-						break;
+		}
+		if (attack_mode == true){
+			try{
+				switch(c){
+				case 'a':
+					if(_left_ != -1){
+						Graphics.en.get(_left_).takeDamage(this.damage);
 					}
-				}catch(Exception e){}
+					break;
+				case 'd':
+					if(_right_ != -1){
+						Graphics.en.get(_right_).takeDamage(this.damage);
+					}
+					break;
+				case 'w':
+					if(_top_ != -1){
+						Graphics.en.get(_top_).takeDamage(this.damage);
+					}
+					break;
+				case 's':
+					if(_down_ != -1){
+						Graphics.en.get(_down_).takeDamage(this.damage);
+					}
+					break;
+				}
+			}catch(Exception e){}
 
 
-			}
 		}
 	}
 
 	public void draw(SimplestPen pen){
 		Vector vec = this.draw_location.make_vector(new Point(this.x, this.y));
 		vec.normalize();
-		
+
 		this.draw_location.move(vec);
 	}
 
