@@ -5,17 +5,24 @@ import java.awt.image.BufferedImage;
 import codeday.rpg.interfaces.Enemy;
 
 public class Rat implements Enemy{
-
+int x;
+int y;
+int life;
+int dam;
+int speed;
 	public Rat(int x,int y){
-		int life = 10;
-		int dam = 10;
+		x = x;
+		y = y;
+		life = 10;
+		dam = 5;
+		speed = 1; 
 		
 		
 	}
 	@Override
 	public int getAttack() {
 		// TODO Auto-generated method stub
-		return 5;
+		return this.dam;
 	}
 
 	@Override
@@ -33,19 +40,19 @@ public class Rat implements Enemy{
 	@Override
 	public int getSpeed() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.speed;
 	}
 
 	@Override
 	public int getX() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.x;
 	}
 
 	@Override
 	public int getY() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.y;
 	}
 
 	@Override
@@ -57,7 +64,7 @@ public class Rat implements Enemy{
 	@Override
 	public boolean drawBackground() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
