@@ -42,16 +42,7 @@ public class Graphics extends SimpleGraphics{
 	@Override
 	public void start(SimplestPen pen) {
 		img=imgs;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
-		ArrayList<Square> s=new ArrayList<Square>();
-		square_array= new Square[40][30];
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
