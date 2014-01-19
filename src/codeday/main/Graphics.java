@@ -31,6 +31,9 @@ public class Graphics extends SimpleGraphics{
 	
 	@Override
 	public void start(SimplestPen pen) {
+		
+		loadImage("wall.png");
+		
 		this.endProgramOnClose=true;
 		pen.setBackground(Color.WHITE);
 		square_list= new ArrayList<Square>();
