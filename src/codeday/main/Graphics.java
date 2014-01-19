@@ -21,10 +21,7 @@ import javax.imageio.ImageIO;
 import Traps.Fire_Trap;
 import codeday.player.RealPlayer;
 import codeday.rpg.enemies.Rat;
-<<<<<<< HEAD
-=======
 import codeday.rpg.interfaces.Enemy;
->>>>>>> branch 'master' of https://github.com/CodeDayPortlandRPG/RPG.git
 import codeday.rpg.interfaces.Player;
 import codeday.rpg.interfaces.Square;
 import codeday.rpg.resource.sprites.FileLoader;
@@ -55,7 +52,7 @@ public class Graphics extends SimpleGraphics{
 		ArrayList<Square> s=new ArrayList<Square>();
 		square_array= new Square[40][30];
 		ArrayList<Enemy> en=new ArrayList<Enemy>();
-		en.add(new Rat(1,1));
+		en.add(new Rat(this.imgs.get("spr_rat_down2.png"), 1,1));
 		loadImage("wall.png");
 		loadImage("spr_main.png");
 		loadImage("spr_rat_down2.png");
